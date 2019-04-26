@@ -1,0 +1,36 @@
+//=============================================================
+// @name guide 18 新手指引
+//=============================================================
+// 获取新手指引
+// @name get_guide
+message m_1801_tos {
+}
+message m_1801_toc {
+    repeated    uint32         steps       = 1; //新手指引完成的步骤列表
+}
+
+
+//完成新手指引
+// @name finish_step
+message m_1802_tos {
+    required    uint32         step       = 1; //新手指引到第几步
+}
+message m_1802_toc {
+}
+
+
+//获取新手礼包领取信息
+// @name get_guide_gift
+message m_1803_tos {
+}
+message m_1803_toc {
+    required     uint32      flag       =1;//是否可以领取0不可以，1可以
+    optional     uint32      day        =2;//可以领取的第几天的礼包
+}
+
+//领取新手礼包
+// @name guide_gift_reward
+message m_1804_tos {
+}
+message m_1804_toc {
+}

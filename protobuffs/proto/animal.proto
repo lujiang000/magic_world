@@ -1,0 +1,278 @@
+//=============================================================
+// @name animal 13 疯狂动物园
+//=============================================================
+// 进入房间
+// @name enter_room
+message m_1301_tos{
+    required    e_zoo_type   type        = 1; // 动物园类型
+}
+
+message m_1301_toc{
+    repeated    p_animal        animals      = 1; // 动物信息
+    repeated    p_animal_role   role_list   = 2; // 玩家信息
+    required    e_zoo_type      type        = 3; // 动物园类型
+
+}
+
+enum e_zoo_type{
+    petty       = 1; // 小资场
+    rich        = 2; // 富豪场
+    diamond     = 3; // 钻石场
+    single      = 0; // 单人场
+}
+
+// 动物信息
+message p_animal{
+    required   uint32   id         = 1;// 唯一id
+    required   e_animal   base_id  = 2;// 动物标识id
+    required   uint32   line_id    = 3;// 路线 
+    required   uint32   point      = 4;// 当前所在路线的位置
+    required   uint32   status     = 5;// 动物状态 0 正常，1冰冻
+    required   uint32   red_bag     = 6;// 动物红包状态 0 没有，1有
+    optional   e_animal  bomber_type  =7;//炸弹类型
+    optional   uint32   self_id     = 8;// 私有大象id
+    optional   string   self_name       = 9;// 私有大象名字
+}
+
+//动物园玩家信息
+message p_animal_role{
+    required   uint32   role_id         = 1;// 玩家id
+    required   string   name            = 2;// 玩家名字
+    required   string   icon            = 3;// 玩家头像
+    repeated   p_skill  skill_list      = 4;// 正在使用的技能列表
+    required   uint32   vip             = 5;// 玩家vip
+    required   uint32   vip_effect      = 6;// 玩家vip特效
+
+}
+
+// 技能信息
+message p_skill{
+    required   e_item_type   type      =1;// 正在使用的技能id
+    required   uint32        effect    =2;//使用效果
+    required   uint32        time      =3;//剩余时间
+}
+
+enum e_animal{
+    balance     = 0; // 金豆
+    turtle      = 1; // 乌龟
+    cock        = 2; // 公鸡
+    dog         = 3; // 斗牛犬
+    monkey      = 4; // 金丝猴
+    horse       = 5; // 矮马
+    ox          = 6; // 奶牛
+    panda       = 7; // 熊猫
+    hippo       = 8; // 河马
+    lion        = 9; // 狮子
+    elephant    =10; // 大象
+    pikachu     =11; // 皮卡丘
+    bomber      =12; // 炸弹人
+    tiger       =13; // 老虎
+    sheep       =14; // 羊驼
+    bear        =15; // 熊
+    type_bomber =16; // 同类型炸弹人
+    xsx        =17; // 小四喜
+    dsy        =18; // 大三元
+    area_bomber =19; // 区域炸弹
+    self_elephant =20; // 私有大象
+    gold_pick =21; // 金猪
+}
+
+
+
+// 离开房间
+// @name leave_room
+message m_1302_tos{}
+
+message m_1302_toc{}
+
+// 打动物
+// @name go_bet
+message m_1303_tos{
+    required    uint32      id          = 1; // 动物唯一ID
+    required    uint32      coin        = 2; // 金币数量
+}
+message m_1303_toc{
+}
+
+
+// 动物园使用道具
+// @name use_item
+message m_1304_tos{
+    required    e_item_type      type     = 1; // 物品类型
+
+}
+message m_1304_toc{
+}
+
+//道具类型
+enum e_item_type{
+       ice = 1;         //  冰冻
+       horn = 2;        //  号角
+       rage = 3;        //  狂暴
+       trumpet = 4;     //  喇叭
+       locking = 5;     //  锁定
+       auto = 6;        //  自动
+       lollipop = 7;    //  棒棒糖
+       coin = 8;        //  金币
+       gold = 9;        //  钻石
+       tel_fare = 10;   //  话费
+       red_bag = 11;    //  红包
+       jd_card = 12;    //  京东卡密
+       candy = 13;    //  小棒棒糖
+       lolly = 14;    //  中棒棒糖
+       self_horn = 15;    //  私有号角
+       xin_card = 16;    //  新字卡
+       nian_card = 17;    //  年字卡
+       kuai_card = 18;    //  快字卡
+       le_card = 19;    //  乐字卡
+       gold_pick = 20;    // 金猪 
+       active_card = 21;    // 活动卡片
+}
+
+// 推送玩家打动物
+// @name push_hit_animal
+message m_1305_toc{
+    required    uint32      role_id     = 1; // 玩家ID
+    required    uint32      id          = 2; // 动物ID
+}
+
+// 推送动物进来
+// @name push_animal_enter
+message m_1306_toc{
+    repeated    p_animal     animals  = 1; //动物信息
+}
+
+// 推送玩家进入房间
+// @name push_role_enter
+message m_1307_toc{
+    required    p_animal_role  role  = 1; //玩家信息
+}
+
+// 推送玩家离开房间
+// @name push_role_leave
+message m_1308_toc{
+    required    uint32      role_id     = 1; // 玩家ID
+}
+
+// 推送动物被打死
+// @name push_animal_die
+message m_1309_toc{
+    required    uint32          role_id     = 1; // 玩家ID
+    required    uint32          type        = 2; // 动物死亡技能特效 0,普通，1闪电，2，炸弹
+    repeated    p_animal_die    ids         = 3; // 打中的动物列表
+}
+
+message p_animal_die{
+    required    uint32          id         = 1; // 动物唯一ID
+    repeated    p_assets        item_list  = 2; // 获得资产列表
+}
+
+// 推送预警
+// @name push_pre_animal
+message m_1310_toc{
+    required   e_animal        base_id  = 1;// 动物标识id
+}
+
+// 推送动物离开
+// @name push_animal_out
+message m_1311_toc{
+    repeated   uint32        id  = 1;// 动物唯一id
+}
+
+// 推送使用技能
+// @name push_use_skill
+message m_1312_toc{
+    required   uint32             role_id     = 1;// 人物id
+    required   e_item_type        type        = 2;// 道具类型
+    required   string             icon        = 3;// 人物头像
+    optional   uint32             effect      = 4;// 效果  狂暴倍数
+}
+
+
+// 推送动物状态改变
+// @name push_animal_status
+message m_1313_toc{
+    repeated    p_animal_status     list = 1;//动物列表
+}
+
+message p_animal_status{
+    required   uint32          id      = 1;// 动物唯一id
+    required   uint32           status = 2;//动物状态 0正常， 1冰冻
+}
+
+// 推送技能消失
+// @name push_delete_skill
+message m_1314_toc{
+    required   uint32         id      =1;//人物id
+    required   e_item_type    type    =2;//技能类型
+}
+
+// 解锁下一挡位
+// @name open_next
+message m_1315_tos{
+}
+message m_1315_toc{
+    required     uint32       coin   =1;//获得金币
+}
+
+// 获取彩金数据
+// @name  get_bonus
+message  m_1316_tos{
+}
+message  m_1316_toc{
+    required     uint32       bonus   =1;//奖金池
+    required     uint32       num     =2;//已经打中的动物数量
+    required     uint32       reward  =3;//已经领取过几次彩金
+
+}
+
+// 彩金抽奖
+// @name  get_bonus_reward
+message  m_1317_tos{
+}
+message  m_1317_toc{
+    required     e_item_type  type    =1;//物品类型
+    required     uint32       num     =2;//数量
+    required     uint32       reward  =3;//已经领取过几次彩金
+}
+
+// 重新请求动物园数据（断线重连）
+// @name reconnect_animal
+message m_1318_tos{
+}
+
+message m_1318_toc{
+    repeated    p_animal        animals      = 1; // 动物信息
+    repeated    p_animal_role   role_list   = 2; // 玩家信息
+    required    e_zoo_type      type        = 3; // 动物园类型
+}
+
+// 开始抽奖彩金
+// @name push_start_bonus
+message m_1319_tos{
+}
+message m_1319_toc{
+    required    uint32      role_id        = 1; // 正在抽奖的人物id
+}
+
+// 抽奖结果
+// @name push_end_bonus
+message m_1320_toc{
+    required    uint32      role_id        = 1; // 抽奖的人物id
+    required     e_item_type  type         = 2;//物品类型
+    required     uint32       num          = 3;//数量
+}
+
+
+// 使用表情
+// @name use_expression
+message m_1321_tos{
+    required     uint32       type          = 1;//表情类型
+    required     uint32       to_id         = 2;//对谁使用的表情id
+}
+message m_1321_toc{
+    required     uint32       role_id          = 1;//人物id
+    required     uint32       type             = 2;//表情类型
+    required     uint32       to_id            = 3;//对谁使用的表情id
+}
+

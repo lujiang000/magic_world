@@ -1,0 +1,605 @@
+//=============================================================
+// @name role 11 人物
+//=============================================================
+
+// 资产推送
+// @name push_role_assets
+message m_1101_toc {
+    repeated    p_assets     list          = 1; // 资产改变列表
+
+}
+
+message p_assets{
+    required    e_item_type  type           = 1;//资产类型
+    required    uint32       num            = 2;//数量
+
+}
+
+// 获取背包信息
+// @name  get_bag_info
+message m_1102_tos {
+}
+message m_1102_toc {
+    repeated   p_assets      list      =1;//所有道具列表
+}
+
+// 实名验证
+// @name check_id_card
+message m_1103_tos {
+    required   string       id        =1;//身份证号
+    required   string       name      =2;//真实姓名
+}
+message m_1103_toc{
+    required   uint32       coin      =1;//获得多少金币
+}
+
+// 使用道具
+// @name use_item
+message m_1104_tos {
+    required    e_item_type  type           = 1;//物品类型
+    required    uint32       num            = 2;//物品数量
+}
+message m_1104_toc{
+    required   uint32       coin            = 1;//获得多少金币
+}
+
+// 使用喇叭
+// @name use_trumpet
+message m_1105_tos {
+    required    string       msg            = 1;//发送的消息
+}
+message m_1105_toc{
+}
+
+// 广播消息
+// @name broadcast_all 
+message m_1106_toc{
+    required    uint32       type           = 1;//类型，1普通游戏广播，2喇叭
+    required    string       name           = 2;//名字
+    required    string       msg            = 3;//发送的消息
+}
+
+// 话费兑换
+// @name exchange_tel_fare
+message m_1107_tos {
+    required    uint32       type            = 1;//兑换的类型，1京东卡， 2话费直，3棒棒糖
+    optional    string       phone            = 2;//电话号码
+}
+message m_1107_toc{
+}
+
+// 使用棒棒糖
+// @name use_lollipop
+message m_1108_tos {
+    required    uint32          num              =1;//使用棒棒糖的个数
+    required    e_item_type     type              =2;//使用棒棒糖的类型
+}
+message m_1108_toc{
+    required    uint32    coin             =1;//使用棒棒糖获得的金币
+}
+
+// 赠送棒棒糖
+// @name send_lollipop
+message m_1109_tos {
+    required    uint32     role_id          =1;//人物id
+    required    uint32     num              =2;//赠送棒棒糖的个数
+    required    e_item_type     type        =3;//赠送棒棒糖的类型
+}
+message m_1109_toc{
+}
+
+// 棒棒糖合成
+// @name exchange_lollipop
+message m_1110_tos {
+    required    uint32          num               =1;//合成物品个数
+    required    e_item_type     type              =2;//合成需要的物品类型
+}
+message m_1110_toc{
+}
+
+
+// 领取贵族礼包物品 
+// @name reward_gift
+message m_1111_tos {
+}
+message m_1111_toc{
+    repeated    p_assets     list          = 1; // 获得资产列表
+}
+
+// 获取贵族礼包信息
+// @name get_gift_info
+message m_1112_tos {
+}
+message m_1112_toc{
+    required    uint32     buy_time          =1;//购买时间
+    required    uint32     end_time          =2;//到期时间
+    required    uint32     reward            =3;//今天是否领取奖励 0,没有，1领取
+}
+
+
+// 获取赠送道具日志
+// @name get_send_log
+message m_1113_tos {
+}
+message m_1113_toc{
+    repeated   p_send_log   list           =1;//日志列表
+}
+
+message p_send_log{
+    required    uint32     role_id           = 1;//赠送的人物id
+    required    e_item_type  type            = 2;//物品类型
+    required    uint32       num             = 3;//物品数量
+    required    uint32       time            = 4;//时间戳
+}
+
+
+// 获取使用道具日志
+// @name get_use_log
+message m_1114_tos {
+}
+message m_1114_toc{
+    repeated   p_use_log   list           =1;//日志列表
+}
+
+message p_use_log{
+    required    e_item_type  type            = 1;//消耗物品类型
+    required    uint32       num             = 2;//消耗物品数量
+    required    e_item_type  type1            = 3;//获得物品类型
+    required    uint32       num1             = 4;//获得物品数量
+    required    uint32       time             = 5;//时间戳
+}
+
+// 获取话费兑换日志
+// @name get_exchange_log
+message m_1115_tos {
+}
+message m_1115_toc{
+    repeated   p_use_log   list           =1;//日志列表
+}
+
+
+// 查看玩家名字等信息
+// @name get_role_info
+message m_1116_tos {
+    required   uint32     id           =1; //玩家id
+}
+message m_1116_toc{
+    required   string     name           =1; //玩家名字
+    required   string     sign           =2; //个性签名
+}
+
+// 获取登陆奖励信息
+// @name login_reward_info
+message m_1117_tos {
+}
+message m_1117_toc{
+    required   uint32     num           =1; //今天已经转过多少次
+}
+
+// 登陆奖励抽奖
+// @name get_login_reward
+message m_1118_tos {
+}
+message m_1118_toc{
+    required    e_item_type  type            = 1;//获得物品类型
+    required    uint32       num             = 2;//获得物品数量
+}
+
+// 获取救济金次数
+// @name get_alms_num
+message m_1119_tos {
+}
+message m_1119_toc{
+    required    uint32       num             = 1;//今天已经领取次数
+}
+
+// 领取救济
+// @name get_alms_reward
+message m_1120_tos {
+}
+message m_1120_toc{
+    required    e_item_type  type            = 1;//获得物品类型
+    required    uint32       num             = 2;//获得物品数量
+}
+
+// 获取赠送次数
+// @name get_send_num
+message m_1121_tos {
+}
+message m_1121_toc{
+    required    uint32       num             = 1;//今天已经赠送次数
+}
+
+// 充值接口
+// @name do_charge 
+message m_1122_tos {
+    required    uint32       type            = 1;//充值类型，1,金币，2钻石，3，充值礼包，4，贵族礼包
+    required    uint32       num             = 2;//充值金额(分)
+    required    uint32       charge_type     = 3;//充值渠道类型，0，微信官方，1威富通微信，2摇钱树支付宝-扫码，3摇钱树微信，4摇钱树支付宝-h5， 5威富通微信扫码,6易宝微信扫码,7摇钱树银联，8个人微信转账，9个人支付宝
+    optional    string       return_url      = 4;//回调地址
+}
+message m_1122_toc{
+    required    string       info           =1;//充值信息
+    required    uint32       charge_type    = 2;//充值渠道类型，0，微信官方，1威富通微信，2摇钱树支付宝-扫码，3摇钱树微信，4摇钱树支付宝-h5， 5威富通微信扫码
+}
+
+// 充值推送
+// @name do_charge_push
+message m_1123_toc{
+    required    uint32       type            = 1;//充值类型，1,金币，2钻石，3，充值礼包，4，贵族礼包
+    repeated    p_assets     list            = 2;//获得资产列表
+}
+
+// vip等级变化推送
+// @name do_vip_push
+message m_1124_toc{
+    required    uint32       vip            = 1;//VIP等级
+}
+
+// 获取vip信息
+// @name get_vip_info
+message m_1125_tos{
+}
+message m_1125_toc{
+    required    uint32       vip            = 1;//VIP等级
+    required    uint32       charge         = 2;//充值额（分）
+}
+
+// 获取Vip登陆奖励信息
+// @name vip_login_reward_info
+message m_1126_tos {
+}
+message m_1126_toc{
+    required   uint32     num           =1; //今天已经转过多少次
+}
+
+// Vip登陆奖励抽奖
+// @name vip_get_login_reward
+message m_1127_tos {
+}
+message m_1127_toc{
+    required    e_item_type  type            = 1;//获得物品类型
+    required    uint32       num             = 2;//获得物品数量
+}
+
+// 修改签名和名字
+// @name set_info
+message m_1128_tos{
+    required    uint32       type            = 1;//修改的类型，1名字，2签名
+    required    string       msg             = 2;//新内容
+}
+message m_1128_toc{
+}
+
+
+// 获取手机验证码
+// @name phone_check 
+message m_1130_tos{
+    required    string       phone            = 1;//手机号
+}
+message m_1130_toc{
+}
+
+// 手机验证码验证
+// @name phone_code_check
+message m_1131_tos{
+    required    uint32       code            = 1;//验证码
+}
+message m_1131_toc{
+    required    e_item_type  type            = 1;//获得物品类型
+    required    uint32       num             = 2;//获得物品数量
+    required    string       phone            = 3;//手机号
+}
+
+// 获取今日分享的次数
+// @name get_share_num 
+message m_1132_tos{
+}
+message m_1132_toc{
+    required    uint32       num             = 1;//今日已经分享的次数
+}
+
+// 分享成功
+// @name get_share_reward
+message m_1133_tos{
+}
+message m_1133_toc{
+    required    uint32       coin             = 1;//分享成功获得的金币
+}
+
+// 获取今日领取救济金次数
+// @name get_free_alms
+message m_1134_tos{
+}
+message m_1134_toc{
+    required    uint32       num             = 1;//今日已经的次数
+}
+
+// 领取救济金
+// @name get_free_alms_reward
+message m_1135_tos{
+}
+message m_1135_toc{
+    required    uint32       coin             = 1;//成功获得的金币
+}
+
+// 分享url签名
+// @name get_sign
+message m_1136_tos{
+    required    string      url     = 1;
+}
+message m_1136_toc{
+    required    string  sign        = 1; // 签名
+    required    string  timestamp   = 2; // 时间戳
+    required    string  noncestr    = 3; // 随机字符串
+}
+
+// 领取红包
+// @name reward_red_bag
+message m_1137_tos{
+}
+message m_1137_toc{
+}
+
+
+// 获取红包信息
+// @name get_red_bag
+message m_1138_tos{
+}
+message m_1138_toc{
+    required    uint32       num             = 1;//今天已经领取多少次
+    required    uint32       min             = 2;//最小提现金额（毛）
+}
+
+// 获取中秋活动奖励次数
+// @name get_mid_act
+message m_1139_tos{
+}
+message m_1139_toc{
+    required    uint32       num             = 1;//今天已经领取多少次
+}
+
+// 领取中秋活动奖励
+// @name get_mid_activity_reward
+message m_1140_tos{
+}
+message m_1140_toc{
+}
+
+
+// 获取好友信息
+// @name get_friend_info
+message m_1141_tos{
+    required    uint32      page             =1;//第几页从1开始
+    required    uint32      num              =2;//第几级好友，1，2，3 ，4 
+    required    uint32      page_num         =3;//一页多少数据
+}
+message m_1141_toc{
+    required    uint32       coin            = 1;//可以获得的金币
+    required    uint32       num             = 2;//所有人数
+    required    uint32       allpage         = 3;//总页数
+    repeated    p_friend     list            = 4;//好友列表
+    repeated    uint32       setting         = 5;//显示几级好友，只显示1级[1], 显示1-2级[1, 2]
+}
+
+message p_friend {
+    required    uint32       role_id          = 1;//玩家id
+    required    string       icon             = 2;//玩家头像
+    required    string       name             = 3;//玩家名字
+}
+
+
+// 获取今日礼包和明日礼包的信息
+// @name get_today_tomorrow_reward
+message m_1142_tos{
+}
+message m_1142_toc{
+    required    uint32       today             = 1;//今日可以领取的金币数量
+    required    uint32       tomorrow          = 2;//明日可以领取的金币数量
+}
+
+// 领取充值今日礼包
+// @name get_today_reward
+message m_1143_tos{
+}
+message m_1143_toc{
+}
+
+
+// 礼包码兑换
+// @name get_code_reward
+message m_1144_tos{
+    required    string       code             = 1;//礼包码
+}
+message m_1144_toc{
+    repeated    p_assets     list          = 1; // 礼包物品列表 
+}
+
+// 获取最近聊天列表
+// @name get_talk_list
+message m_1145_tos{
+}
+message m_1145_toc{
+    repeated    p_talk_role     list          = 1; // 聊天人物列表
+}
+
+message p_talk_role{
+    required   uint32       role_id        =1;//人物id
+    required   string       name           =2;//人物名字
+    required   string       icon           =3;//人物头像
+    required   uint32       vip            =4;//人物vip
+    required   uint32       status         =5;//人物是否在线 0不在线，1在线
+}
+
+// 发送聊天
+// @name talk_to_other
+message m_1146_tos{
+    required   string       message           =1;//聊天信息
+    required   uint32       role_id           =2;//人物id
+}
+message m_1146_toc{
+}
+
+// 收到聊天
+// @name  recive_message 
+message m_1147_toc{
+    required   uint32       role_id        =1;//人物id
+    required   string       name           =2;//人物名字
+    required   string       icon           =3;//人物头像
+    required   uint32       vip            =4;//人物vip
+    required   string       message        =5;//聊天信息
+}
+
+// 系统公告，推送给在线玩家
+// @name sys_msg 
+message m_1148_toc{
+    required   string       msg        =1;//公告信息
+}
+
+// 封号详细信息
+// @name black_role_info
+message m_1149_toc{
+    required   uint32       start_time        =1;//封号开始时间
+    required   uint32       end_time          =2;//封号结束时间
+}
+
+// 充值红包抵扣
+// @name redbag_to_charge 
+message m_1150_tos{
+    required    uint32       type            = 1;//充值类型，1,金币，2钻石
+    required    uint32       num             = 2;//充值金额(分)
+}
+message m_1150_toc{
+    required    uint32       num             = 1;//额外赠送获得
+}
+
+// 新年卡合成
+// @name exchange_card
+message m_1151_tos {
+    required    uint32          num               =1;//合成物品个数
+    required    e_item_type     type              =2;//合成的物品类型
+}
+message m_1151_toc{
+}
+
+// 特效选择
+// @name select_hit_effect
+message m_1152_tos {
+    required    uint32          vip               =1;//vip等级
+}
+message m_1152_toc{
+}
+
+
+// 好友提供金币推送
+// @name push_friend_coin
+message m_1153_toc{
+    required    uint32         num              =1;//金币数量
+    required    uint32         role_id          =2;// 人物id
+    required    string         name             =3;//名字
+    required    string         icon             =4;//头像
+}
+
+// 获取成就
+// @name get_achievement_info
+message m_1154_tos{
+}
+message m_1154_toc{
+    repeated    p_achievement    list          =1;//成就信息
+}
+
+message p_achievement{
+    required    uint32          type           =1;//类型
+    required    uint32          id             =2;//当前正在进行的成就id
+    repeated    uint32          reward_list    =3;//可以领取奖励的成就id
+    required    uint32          value          =4;//当前成就完成的值
+}
+
+// 领取成就奖励
+// @name reward_achievement
+message   m_1155_tos{
+    required    uint32          type           =1;//类型
+    required    uint32          id             =2;//领取奖励的成就id
+}
+message  m_1155_toc{
+    required    uint32          type           =1;//类型
+    required    uint32          id             =2;//领取奖励的成就id
+}
+
+// 推送有可以领取的成就奖励
+// @name  push_achievement_reward
+message m_1156_toc{
+    required    uint32          type           =1;//类型
+    required    uint32          id             =2;//奖励的成就id
+}
+
+// 获取每周任务信息
+// @name get_week_task_info
+message  m_1157_tos{
+}
+message  m_1157_toc{
+    repeated   p_week_task      list         =1;//任务列表
+}
+
+message p_week_task{
+    required   uint32           id          =1;//任务id
+    required   uint32           value       =2;//当前完成的值
+    required   uint32           reward      =3;//是否已经领取奖励
+}
+// 领取每周任务奖励
+// @name reward_week_task
+message  m_1158_tos{
+    required   uint32          id           =1;//任务id
+}
+message  m_1158_toc{
+    required   uint32         id            =1;//任务id
+}
+// 每日签到信息
+// @name daily_sign
+message m_1159_tos{
+ }
+message m_1159_toc{
+     required  uint32         day          =1;//已经签到了第几天
+     required  uint32         flag         =2;//今天是否已经签到,0否，1是
+ }
+// 进行签到
+// @name do_daily_sign
+message  m_1160_tos{
+}
+message  m_1160_toc{
+    required   uint32        day         =1;//签到第几天
+}
+// 领取关注奖励
+// @name  subscribe_reward
+message  m_1161_tos{
+}
+message  m_1161_toc{
+}
+
+
+// 前端错误日志
+// @name client_error_log
+message m_1197_tos {
+    required    string      msg       = 1;
+}
+message m_1197_toc {
+}
+
+
+// GM命令
+// @name gm_charge 
+message m_1198_tos {
+    required    uint32       type                = 1;//充值类型 1金币，2钻石，3 1元礼包，4 贵族礼包
+    required    uint32       num                 = 2;//充值金额（分）
+}
+message m_1198_toc{
+}
+
+// @name gm_butten 
+message m_1199_tos {
+    required    e_item_type  type           = 1;//物品类型
+    required    uint32       num            = 2;//物品数量
+}
+message m_1199_toc{
+}
+

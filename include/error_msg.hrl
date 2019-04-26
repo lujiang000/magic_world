@@ -1,0 +1,51 @@
+-define(error_busy, 1).           %% 系统繁忙，请稍后再试。
+-define(error_coin, 2).           %% 金币不足
+-define(error_item, 3).           %% 未知道具
+-define(error_gold, 4).           %% 钻石不足
+-define(error_act, 5).            %% 错误的操作
+-define(error_repeat_login, 6).   %% 重复登陆
+-define(error_role_data, 7).      %% 玩家数据异常
+-define(error_role_exit, 8).      %% 玩家数据不存在
+-define(error_item_use, 9).       %% 道具使用未冷却
+-define(error_screat, 10).        %% 登陆过期
+-define(error_login_other, 11).   %% 在其他地方登陆
+-define(error_item_repeat, 12).   %% 目前不能使用该道具
+-define(error_max, 13).           %% 已经达到最大
+-define(error_horn, 14).          %% 当前不能使用号角
+-define(error_item_num, 15).      %% 道具数量不足
+-define(error_msg, 16).           %% 不合法的文字
+-define(error_num, 17).           %% 次数不足
+-define(error_first_gift, 18).    %% 首冲礼包已经购买过了
+-define(error_shop_item, 19).     %% 不存在的商品
+-define(error_shop_status, 20).   %% 神秘商店已经关闭，请期待下次开启
+-define(error_phone, 21).         %% 错误的手机号
+-define(error_phone_num, 22).     %% 今天验证次数已经满了
+-define(error_phone_code, 23).    %% 验证码错误
+-define(error_phone_exit, 24).    %% 手机号码已经绑定
+-define(error_share, 25).         %% 今日分享奖励已经领取
+-define(error_alms_num, 26).      %% 今日救济金已经领取完
+-define(error_alms_coin, 27).     %% 没有达到领取救济金要求
+-define(error_red_bag_min, 28).     %% 最低领取红包10元以上
+-define(error_red_bag_num, 29).     %% 每天最多领取3次红包
+-define(error_act_time, 30).      %% 活动未开启
+-define(error_phone_screat, 31).  %% 手机密码错误
+-define(error_screat_null, 32).  %% 手机密码不能为空
+-define(error_phone_wx, 33).     %% 该账号已经绑定微信
+-define(error_fix_wx, 34).     %% 该微信号已经被绑定
+-define(error_animal_exit, 35).     %% 动物已经不存在 
+-define(error_gift_code, 36).      %% 礼品码错误 
+-define(error_gift_code_reward, 37).     %% 该礼包已经领取了
+-define(error_coin_tree_time, 38).     %%摇钱树数活动已过期
+-define(error_coin_tree_num, 39).     %%今日摇钱树数次数已经用完
+-define(error_coin_tree_reward_time, 40).     %%摇钱树正在长大稍后再试
+-define(error_animal_self, 41).     %%私有动物别乱搞
+-define(error_online_role, 42).     %%玩家不在线
+-define(error_self_horn, 43).          %% 只能允许一只专属动物
+-define(error_vip, 44).              %% vip等级不足
+-define(error_black, 45).              %% 系统检测账号异常，封号处理
+-define(error_fix_wx_not_phone, 46).    %% 该账号已经绑定微信,没有绑定手机，可以强制绑定手机
+-define(error_red_bag_code, 47).              %% 红包code未授权
+-define(error_red_bag_num_limit, 49).              %% 红包企业付款次数限制
+-define(error_red_bag_not_exist, 50).              %% 企业付款没钱了
+-define(error_red_bag_account, 51).              %% 没有实名制微信号
+-define(error_exchange_flow, 52).              %% 兑换流量已经用完

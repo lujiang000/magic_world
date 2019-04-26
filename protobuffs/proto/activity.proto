@@ -1,0 +1,51 @@
+//=============================================================
+// @name activity 19 活动
+//=============================================================
+// 获取摇钱树信息
+// @name get_coin_tree_info
+message m_1901_tos {
+}
+message m_1901_toc {
+    required    uint32         num       = 1; //今日已经领取的次数 
+    required    uint32         time       = 2; //下次可以领取的剩余时间
+}
+
+
+//领取摇钱树奖励
+// @name get_coin_tree_reward
+message m_1902_tos {
+}
+message m_1902_toc {
+    required    uint32         coin       = 1; //获得多少金币
+}
+
+message p_active{
+    required   uint32          type                = 1;// 活动类型 1摇钱树， 2新年集卡
+    required   uint32          start_time          = 2;// 开启时间
+    required   uint32          end_time            = 3;// 结束时间
+}
+
+// 获取活动开启列表
+// @name get_acitve_info
+message m_1903_tos {
+}
+message m_1903_toc {
+    repeated    p_active     list           = 1; //活动开启列表
+}
+
+
+// 获取购买活动礼包次数
+// @name buy_active_gift_num
+message m_1904_tos {
+}
+message m_1904_toc {
+    required    uint32         num       = 1; //今日已经购买的数量
+}
+
+// 活动转盘 
+// @name active_turn 
+message m_1905_tos {
+}
+message m_1905_toc {
+    required   p_assets    num  =1; //获得奖励
+}

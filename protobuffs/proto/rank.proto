@@ -1,0 +1,51 @@
+//=============================================================
+// @name rank 12 排行信息
+//=============================================================
+
+// 查看排行
+// @name get_rank_info 
+message m_1201_tos {
+    required    uint32          type          = 1; // 1.财富，2物品，3盈利, 4击杀榜,5每日大奖赛，6每周大奖赛
+    required    uint32          start         = 2; // 从第几名开始
+    required    uint32          num           = 3; // 多少数量数据
+    required    uint32          up_or_down    = 4; // 向下翻还是上翻，0下，1上
+    required    uint32          date          = 5; // 0：当前排行榜，1：上期排行， 2：上上期。。。。。。
+
+}
+message m_1201_toc {
+    repeated    p_rank_info     list          = 2; // 排行信息
+    required    uint32          num           = 3; // 自己的排名 0未上榜
+    required    uint64          value         = 4; // 自己的值
+}
+
+message p_rank_info {
+    required    uint32          num         = 1; // 排行名次
+    required    uint32          id          = 2; // 唯一id
+    required    uint32          role_id     = 3; // 玩家id
+    required    string          name        = 4; // 名字
+    required    string          icon        = 5; // icon
+    required    uint32          vip         = 6; // vip
+    required    string          sign        = 7; // 个性签名
+    required    uint64          value1      = 8; // 排行第一个值
+    optional    uint32          value2      = 9; 
+    optional    uint32          value3      = 10; 
+    optional    uint32          value4      = 11; 
+    optional    uint32          value5      = 12; 
+}
+
+// 查看排行榜设置奖励， 和开关设置
+// @name  get_rank_reward 
+message m_1202_tos {
+    required    uint32          type          = 1; // 1.财富，2物品，3盈利, 4击杀榜，5每日大奖赛，6每周大奖赛，7周击杀榜
+}
+message m_1202_toc {
+    repeated    p_rank_reward    list         =1;//奖励列表
+    required    uint32           type         =2;//开启的类型，目前只用于日击杀和周击杀榜, 0表示这两个都没有开
+}
+
+
+message p_rank_reward {
+    required    uint32           num               = 1; //名次
+    required    e_item_type      item_type         = 2; //物品类型
+    required    uint32           item_num          = 3; //物品数量
+}

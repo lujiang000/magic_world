@@ -1,0 +1,11 @@
+import "../proto/login.proto";
+import "../proto/role.proto";
+import "../proto/rank.proto";
+import "../proto/animal.proto";
+import "../proto/mail.proto";
+import "../proto/shop.proto";
+import "../proto/task.proto";
+import "../proto/guide.proto";
+import "../proto/activity.proto";
+
+

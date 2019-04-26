@@ -1,0 +1,48 @@
+//=============================================================
+// @name shop 16 神秘商店
+//=============================================================
+// 获取神秘商店信息
+// @name get_shop_status
+message m_1601_tos {
+}
+message m_1601_toc {
+    required    uint32         start_time       = 1; //开始时间
+    required    uint32         end_time         = 2; //结束时间
+    required    uint32         status           = 3; //状态，0未开启，1开启
+    required    uint32         num              = 4; //剩余棒棒糖的数量
+    required    uint32         all_num          = 5; //总棒棒糖的数量
+}
+
+
+// 获取神秘商店物品列表
+// @name get_shop_items
+message m_1602_tos {
+}
+message m_1602_toc {
+    repeated     p_shop_item       list = 1;//物品列表
+}
+
+message p_shop_item{
+    required    uint32             id = 1;//商品唯一id
+    required    e_item_type        type = 2;//商品类型
+    required    uint32             price = 3;//价格元
+    required    uint32             need_num = 4;//所需要棒棒糖的数量
+}
+
+
+// 推送神秘商店开启关闭
+// @name push_shop_status
+message m_1603_toc {
+    required    uint32         status           = 1; //状态，0未开启，1开启
+}
+
+
+
+// 兑换 
+// @name exchange_shop_items
+message m_1605_tos {
+    required    uint32             id = 1;//商品唯一id
+    optional    string             phone = 2;//手机号
+}
+message m_1605_toc {
+}

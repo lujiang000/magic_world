@@ -1,0 +1,110 @@
+//=============================================================
+// @name login 10 登入 注册
+//=============================================================
+// 微信登陆
+// @name login
+message m_1001_tos {
+    required    string          code            = 1; //微信code
+    required    uint32          parent_id       = 2; // 上级id
+    required    string          red_code        = 3; //发红包的code
+    required    string          pay_code        = 4; //支付code
+    required    uint32          channel_id      = 5; // 渠道id(合作商id)
+    required    uint32          role_id         = 6; // 玩家id,微信正常登陆为0，绑定微信时的玩家id
+    required    uint32          flag            = 7; // 是否强制绑定账号0否，1是 
+}
+message m_1001_toc {
+    required    p_role_info    info        = 1;
+    required    uint32         id          = 2; //验证id
+}
+
+// 登入测试
+// @name test_login
+message m_1002_tos {
+    required    string          account        = 1;
+}
+message m_1002_toc {
+    required    p_role_info    info        = 1;
+    required    uint32         id          = 2; //验证id
+}
+
+// 验证码登陆(断线重连)
+// @name screat_login
+message m_1003_tos {
+    required    uint32         role_id          = 1; //roleid
+    required    uint32         id               = 2; //验证id
+}
+message m_1003_toc {
+    required    p_role_info    info        = 1;
+    required    uint32         id          = 2; //验证id
+}
+
+// 手机登陆
+// @name phone_login
+message m_1004_tos {
+    required    string          phone         = 1; //手机号
+    required    string          screat        = 2; //密码
+}
+message m_1004_toc {
+    required    p_role_info    info        = 1;
+    required    uint32         id          = 2; //验证id
+}
+
+// 手机注册获取验证码
+// @name phone_create
+message m_1005_tos {
+    required    string          phone         = 1; //手机号
+}
+message m_1005_toc {
+}
+
+// 手机验证码登陆
+// @name phone_screat_login
+message m_1006_tos {
+    required    string          phone         = 1; //手机号
+    required    string          screat        = 2; //密码
+    required    uint32          id            = 3; //验证码
+    required    uint32          parent_id     = 4; // 上级id
+    required    uint32          channel_id    = 5; // 渠道id(合作商id)
+}
+message m_1006_toc {
+    required    p_role_info    info        = 1;
+    required    uint32         id          = 2; //验证id
+}
+
+
+// 主页信息
+message p_role_info {
+    required    uint32      role_id         = 1;
+    required    string      nick_name       = 2;
+    required    string      icon            = 3;
+    required    uint32      vip             = 4; // VIP等级
+    required    uint32      gold            = 5; // 钻石
+    required    uint32      coin            = 6; // 金豆
+    required    uint32      status          = 7; // 当前所在状态，0大厅，1动物园, 2竞技场免费，3竞技场报名状态，4大奖赛
+    required    uint32      use_coin        = 8; // 当前所能使用的金币玩游戏的最大数额
+    required    uint32      first_gift      = 9; // 是否购买了1元礼包，0否，1是 
+    required    uint32      id_card         = 10; // 是否身份证验证，0否, 1是
+    required    string      sign            = 11; // 个性签名
+    required    string      phone           = 12; // 手机号
+    required    uint32      channel         = 13; // 合作商id
+    required    string      openid          = 14; // 登陆的openid
+    optional    uint32      regist          = 15; // 是否本次操作是注册1是
+    required    uint32      vip_effect      = 16; // vip特效
+    required    uint32      subscribe       = 17; // 0未关注，1，关注未领取，2，已经领取
+
+}
+
+
+// 心跳包
+// @name heart 
+message m_1098_tos {
+}
+message m_1098_toc {
+}
+
+
+// 错误提示协议
+// @name error_msg
+message m_1099_toc {
+    required    uint32    error_code        = 1;
+}

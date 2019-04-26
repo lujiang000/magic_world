@@ -1,0 +1,37 @@
+{
+ [
+ 'data/*'
+ ,'src/*'
+ ,'src/lib/*'
+ ,'src/lib/json/*'
+ ,'src/sys/*'
+ ,'src/emysql/*'
+ ,'src/log/*'
+ ,'src/role/*'
+ ,'src/login/*'
+ ,'src/charge/*'
+ ,'src/web/*'
+ ,'src/mochiweb/*'
+ ,'src/rank/*'
+ ,'src/mail/*'
+ ,'src/animal/*'
+ ,'src/boradcast/*'
+ ,'src/robot/*'
+ ,'src/charge/*'
+ ,'src/vip/*'
+ ,'src/area/*'
+ ,'src/shop/*'
+ ,'src/task/*'
+ ,'src/guide/*'
+ ,'src/friend/*'
+ ,'src/weixin/*'
+ ,'src/account/*'
+ ,'src/setting/*'
+ ,'src/activity/*'
+ ,'src/great_match/*'
+ ],
+ [
+ {i, "include"}
+ ,{outdir, "ebin"}
+ ]
+ }.

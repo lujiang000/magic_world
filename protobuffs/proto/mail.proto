@@ -1,0 +1,66 @@
+//=============================================================
+// @name mail 14 邮件
+//=============================================================
+
+// 获取邮件列表
+// @name get_all_mail 
+message m_1401_tos {
+}
+message m_1401_toc {
+    repeated    p_mail     list          = 1; // 邮件列表
+}
+
+message p_mail{
+    required    uint32       id           = 1;//邮件唯一id标识
+    required    string       title        = 2;//邮件标题
+    required    string       msg          = 3;//邮件内容
+    repeated    p_assets     items        = 4;//物品列表
+    required    uint32       time         = 5;//邮件发送时间
+    required    uint32       timeout      = 6;//邮件过期时间
+    required    uint32       status       = 7;//邮件状态，0未读，1已读，2已领取
+}
+
+// 领取邮件物品
+// @name get_mail_item
+message m_1402_tos {
+    required    uint32       id           = 1;//邮件唯一id标识
+}
+message m_1402_toc {
+    repeated    p_assets     list          = 1; // 物品列表
+}
+
+// 读取邮件
+// @name read_mail
+message m_1403_tos {
+    required    uint32       id           = 1;//邮件唯一id标识
+}
+message m_1403_toc {
+}
+
+// 删除邮件
+// @name delete_mail
+message m_1404_tos {
+    required    uint32       id           = 1;//邮件唯一id标识
+}
+message m_1404_toc {
+}
+
+// 一键领取邮件
+// @name get_all_mail_item
+message m_1405_tos {
+}
+message m_1405_toc {
+    repeated    p_assets     list          = 1; // 物品列表
+}
+
+// 一键删除邮件
+// @name delete_all_mail
+message m_1406_tos {
+}
+message m_1406_toc {
+}
+
+// 新邮件提醒推送
+// @name new_mail
+message m_1407_toc {
+}

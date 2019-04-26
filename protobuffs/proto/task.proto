@@ -1,0 +1,88 @@
+//=============================================================
+// @name task 17 任务
+//=============================================================
+// 获取触发任务
+// @name get_task
+message m_1701_tos {
+}
+message m_1701_toc {
+    repeated    p_process      list       = 1; //进度列表
+    required    uint32         time       = 2; //剩余时间
+    repeated    p_assets       reward     = 3; //奖励列表
+}
+
+
+//推送触发任务
+// @name push_task
+message m_1702_toc {
+    repeated    p_process      list       = 1; //进度列表
+    required    uint32         time       = 2; //剩余时间
+    repeated    p_assets       reward     = 3; //奖励列表
+}
+
+message p_process{
+    required    uint32             id = 1;//任务id
+    required    e_animal           type = 2;//动物类型
+    required    uint32             value = 3;//当前完成进度
+    required    uint32             target = 4;//目标值
+}
+
+
+// 推送任务更新
+// @name push_task_process
+message m_1703_toc {
+    repeated    p_process      list       = 1; //进度列表
+}
+
+
+// 获取新手任务
+// @name get_guide_task
+message m_1704_tos {
+}
+message m_1704_toc {
+    required    uint32             id = 1;//任务id
+    required    uint32             value = 3;//当前完成进度
+    required    uint32             target = 4;//目标值
+}
+
+
+//推送新的新手任务
+// @name push_guide_task
+message m_1705_toc {
+    required    uint32             id = 1;//任务id
+    required    uint32             value = 3;//当前完成进度
+    required    uint32             target = 4;//目标值
+}
+
+// 推送新手任务更新
+// @name push_guide_task_process
+message m_1706_toc {
+    required    uint32             value = 1;//当前完成进度
+}
+
+
+// 获取每日任务列表
+// @name get_daily_task
+message m_1707_tos{
+}
+message m_1707_toc{
+    repeated   p_daily_task   list =1;//列表
+}
+
+message p_daily_task{
+    required    uint32              id =1;// 每日任务配置id
+    required    uint32              value = 2;//当前完成进度
+}
+
+// 推送任务进度
+// @name push_daily_task
+message  m_1708_toc{
+    required  p_daily_task  task =1;//推送任务进度
+}
+
+
+// 推送触发成就任务完成
+// @name push_role_task
+message m_1709_toc {
+    required    uint32             id = 1;//任务id
+}
